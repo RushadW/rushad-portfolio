@@ -82,3 +82,11 @@ export const CONFIG = {
 export function resumeHref() {
   return CONFIG.resume.url || CONFIG.resume.fallbackPath;
 }
+
+/**
+ * GitHub serves every user's avatar at a stable, static URL — no API
+ * call, no rate limit, no caching logic needed (unlike the repo feed).
+ */
+export function githubAvatarUrl(size = 240) {
+  return `https://github.com/${CONFIG.github.username}.png?size=${size}`;
+}

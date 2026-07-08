@@ -143,6 +143,28 @@ a:hover {
 }
 
 /* ============ Hero ============ */
+.hero__layout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.hero__text {
+  flex: 1;
+  min-width: 0;
+}
+
+.hero__avatar {
+  width: 220px;
+  height: 220px;
+  flex-shrink: 0;
+  border: var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hard);
+  object-fit: cover;
+}
+
 .hero__name {
   font-family: var(--font-display);
   font-size: var(--fs-hero);
@@ -428,6 +450,14 @@ a:hover {
   }
   .titlebar__title {
     display: none;
+  }
+  .hero__layout {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+  .hero__avatar {
+    width: 96px;
+    height: 96px;
   }
 }
 
