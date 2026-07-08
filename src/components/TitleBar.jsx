@@ -12,9 +12,9 @@ export default function TitleBar() {
         {CONFIG.handle}@{CONFIG.hostname}: ~
       </span>
       <nav className="titlebar__nav" aria-label="Main">
-        <a href="#projects">projects</a>
-        <a href="#experience">experience</a>
         <a href="#skills">skills</a>
+        <a href="#experience">experience</a>
+        <a href="#projects">projects</a>
         <a href={`mailto:${CONFIG.email}`}>contact</a>
       </nav>
     </header>

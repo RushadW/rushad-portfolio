@@ -11,9 +11,9 @@ export default function App() {
       <TitleBar />
       <main>
         <Hero />
-        <Projects />
-        <ExperienceTree />
         <Skills />
+        <ExperienceTree />
+        <Projects />
       </main>
       <StatusBar />
     </div>
