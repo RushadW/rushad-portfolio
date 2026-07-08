@@ -1,0 +1,42 @@
+/* ============================================================
+   DESIGN TOKENS — edit the theme here and only here.
+   Every component reads from these variables.
+
+   Try alternate palettes by swapping the five --c-* values:
+     Phosphor green : --c-accent: #33DD55  on --c-bg: #0D0D0D
+     Vaporwave      : --c-accent: #FF2E88; --c-accent-2: #7DF9FF
+   ============================================================ */
+
+:root {
+  /* ---- Palette (amber-phosphor on paper) ---- */
+  --c-bg: #f2efe6;        /* page background: warm paper, not white   */
+  --c-surface: #ffffff;   /* card / block background                  */
+  --c-ink: #111111;       /* text + all borders                       */
+  --c-accent: #ffaa00;    /* CRT amber — highlights, prompt, buttons  */
+  --c-accent-2: #2244ff;  /* link blue — secondary accent             */
+  --c-muted: #5c5850;     /* secondary text                           */
+  --c-ok: #1a9e4b;        /* status "ok" green                        */
+
+  /* ---- Borders & shadows (the brutalist part) ---- */
+  --border-w: 3px;
+  --border: var(--border-w) solid var(--c-ink);
+  --shadow-offset: 6px;
+  --shadow-hard: var(--shadow-offset) var(--shadow-offset) 0 var(--c-ink);
+  --shadow-hard-sm: 3px 3px 0 var(--c-ink);
+  --radius: 0px; /* raise to 4-6px for a softer variant */
+
+  /* ---- Type ---- */
+  --font-mono: 'Fira Code', 'Source Code Pro', ui-monospace, 'SF Mono',
+    Menlo, Consolas, monospace;
+  --font-display: 'Archivo Black', var(--font-mono);
+
+  --fs-hero: clamp(2.4rem, 7vw, 5rem);
+  --fs-h2: clamp(1.4rem, 3.2vw, 2rem);
+  --fs-body: 1rem;
+  --fs-small: 0.8125rem;
+
+  /* ---- Layout ---- */
+  --max-w: 1080px;
+  --gap: 1.25rem;
+  --pad-block: 1.5rem;
+}

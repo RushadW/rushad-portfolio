@@ -1,0 +1,32 @@
+{
+  "_comment": "Offline/rate-limit fallback. Same shape the GitHub normalizer expects. Regenerate occasionally, or leave as a curated 'greatest hits' list.",
+  "projects": [
+    {
+      "name": "rxrefactor",
+      "description": "AI medical-benefit drug policy tracker: hybrid exact-match + RAG semantic search over 6,100+ policy fragments across 5 insurers, <500ms end-to-end.",
+      "url": "https://github.com/RushadW",
+      "language": "Python",
+      "tags": ["react", "fastapi", "chromadb", "rag", "docker"],
+      "stars": 0,
+      "pushedAt": "2026-06-01T00:00:00Z"
+    },
+    {
+      "name": "assessment-ai",
+      "description": "LLM-powered student assessment platform: Django REST + dual-LLM pipeline with fallback routing, SHA-256/n-gram answer caching, per-student memory. Deployed on Cloud Run.",
+      "url": "https://github.com/RushadW",
+      "language": "Python",
+      "tags": ["django", "react", "openai", "gemini", "gcp"],
+      "stars": 0,
+      "pushedAt": "2026-03-01T00:00:00Z"
+    },
+    {
+      "name": "face-recognition-pipeline",
+      "description": "FaceNet inference across IaaS, serverless, and edge: custom EC2 autoscaler (scales to 0 in 0.24s), Lambda variant, and Greengrass edge split cutting latency 57%.",
+      "url": "https://github.com/RushadW",
+      "language": "Python",
+      "tags": ["pytorch", "aws-lambda", "iot-greengrass", "sqs", "docker"],
+      "stars": 0,
+      "pushedAt": "2025-12-01T00:00:00Z"
+    }
+  ]
+}
