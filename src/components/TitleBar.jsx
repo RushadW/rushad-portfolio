@@ -13,9 +13,8 @@ export default function TitleBar() {
       </span>
       <nav className="titlebar__nav" aria-label="Main">
         <a href="#projects">projects</a>
-        <a href={CONFIG.resumePath} target="_blank" rel="noreferrer">
-          resume
-        </a>
+        <a href="#experience">experience</a>
+        <a href="#skills">skills</a>
         <a href={`mailto:${CONFIG.email}`}>contact</a>
       </nav>
     </header>

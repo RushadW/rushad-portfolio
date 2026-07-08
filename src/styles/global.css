@@ -430,3 +430,191 @@ a:hover {
     display: none;
   }
 }
+
+/* ============ Project tabs (Claude Code-style) ============ */
+.tabs-shell {
+  border: var(--border);
+  box-shadow: var(--shadow-hard-sm);
+  background: var(--c-surface);
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  background: var(--c-bg);
+  border-bottom: var(--border);
+}
+
+.tab {
+  appearance: none;
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  padding: 0.55rem 1rem;
+  background: transparent;
+  color: var(--c-muted);
+  border: none;
+  border-right: 2px solid var(--c-ink);
+  cursor: pointer;
+}
+
+.tab:hover {
+  color: var(--c-ink);
+  background: var(--c-surface);
+}
+
+.tab[aria-selected='true'] {
+  background: var(--c-ink);
+  color: var(--c-accent);
+}
+
+.tab[aria-selected='true']::before {
+  content: '> ';
+}
+
+/* ---- Panel ---- */
+.tab-panel {
+  padding: clamp(1rem, 3vw, 1.75rem);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.panel__meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1.25rem;
+  font-size: var(--fs-small);
+  color: var(--c-muted);
+}
+
+.panel__lang {
+  color: var(--c-ink);
+  font-weight: 700;
+}
+
+.panel__links {
+  display: inline-flex;
+  gap: 1rem;
+}
+
+.panel__desc {
+  max-width: 72ch;
+}
+
+.panel__media {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--gap);
+}
+
+.panel__media:empty {
+  display: none;
+}
+
+.panel__media img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border: var(--border);
+  box-shadow: var(--shadow-hard-sm);
+  display: block;
+  background: var(--c-bg);
+}
+
+/* ============ Experience tree ============ */
+.tree {
+  font-family: var(--font-mono);
+  font-size: clamp(0.78rem, 1.7vw, 0.9375rem);
+  line-height: 1.7;
+  background: var(--c-ink);
+  color: var(--c-bg);
+  border: var(--border);
+  box-shadow: var(--shadow-hard-sm);
+  padding: 1.1rem 1.25rem;
+  overflow-x: auto;
+  margin: 0;
+}
+
+.tree__line {
+  display: block;
+  white-space: pre;
+  opacity: 0; /* revealed line-by-line once in view */
+}
+
+.tree--printed .tree__line {
+  animation: tree-print 60ms steps(1) forwards;
+  animation-delay: calc(var(--i) * 70ms);
+}
+
+@keyframes tree-print {
+  to {
+    opacity: 1;
+  }
+}
+
+.tree__glyph {
+  color: var(--c-muted);
+}
+
+.tree__dir {
+  color: var(--c-accent);
+  font-weight: 700;
+}
+
+.tree__file {
+  color: var(--c-bg);
+}
+
+.tree__detail {
+  color: #9a948a;
+}
+
+.tree__summary {
+  color: var(--c-muted);
+}
+
+/* Reduced motion: show the whole tree immediately. */
+@media (prefers-reduced-motion: reduce) {
+  .tree__line {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/* ============ Skills groups ============ */
+.skills-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.skills-group {
+  display: grid;
+  grid-template-columns: 10rem 1fr;
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.skills-group__name {
+  font-weight: 700;
+  color: var(--c-accent-2);
+}
+
+.skills-group__name::before {
+  content: 'drwxr-xr-x ';
+  color: var(--c-muted);
+  font-weight: 400;
+  font-size: var(--fs-small);
+}
+
+@media (max-width: 640px) {
+  .skills-group {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+}

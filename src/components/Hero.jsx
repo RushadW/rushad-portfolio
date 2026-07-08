@@ -1,9 +1,4 @@
-import { CONFIG } from '../config.js';
-
-const CORE_SKILLS = [
-  'C++', 'C#', 'Python', 'React', 'FastAPI', '.NET',
-  'AWS', 'Docker', 'PostgreSQL', 'PyTorch',
-];
+import { CONFIG, resumeHref } from '../config.js';
 
 function PromptLine({ command }) {
   return (
@@ -35,7 +30,7 @@ export default function Hero() {
       <div className="hero__actions">
         <a
           className="btn btn--accent"
-          href={CONFIG.resumePath}
+          href={resumeHref()}
           target="_blank"
           rel="noreferrer"
         >
@@ -47,14 +42,6 @@ export default function Hero() {
         <a className="btn" href={CONFIG.links.linkedin} target="_blank" rel="noreferrer">
           linkedin
         </a>
-      </div>
-
-      <div style={{ marginTop: '2rem' }} className="skills" aria-label="Core skills">
-        {CORE_SKILLS.map((s) => (
-          <span key={s} className="chip">
-            {s}
-          </span>
-        ))}
       </div>
     </section>
   );
