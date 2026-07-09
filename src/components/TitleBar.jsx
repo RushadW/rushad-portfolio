@@ -34,6 +34,12 @@ export default function TitleBar() {
     recalc();
     const ro = new ResizeObserver(recalc);
     ro.observe(bar);
+    // The nav/title widths change when the web font swaps in, without
+    // the (full-width) bar itself resizing — watch them too, and re-run
+    // once fonts are ready so the decision isn't stale fallback metrics.
+    if (navRef.current) ro.observe(navRef.current);
+    if (titleMeasureRef.current) ro.observe(titleMeasureRef.current);
+    document.fonts?.ready?.then(recalc);
     return () => ro.disconnect();
   }, []);
 

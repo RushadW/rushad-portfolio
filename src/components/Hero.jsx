@@ -33,10 +33,10 @@ export default function Hero() {
         {CONFIG.github.showAvatar && (
           <img
             className="hero__avatar"
-            src={avatarUrl(200)}
+            src={avatarUrl(440)}
             alt={`${CONFIG.name} — GitHub avatar`}
-            width={200}
-            height={200}
+            width={220}
+            height={220}
             loading="lazy"
             onError={(e) => {
               e.currentTarget.style.display = 'none';

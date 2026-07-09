@@ -46,7 +46,7 @@ export default function ProjectPanel({ project }) {
       <p className="panel__desc">{description}</p>
 
       {tags.length > 0 && (
-        <div className="project-card__tags">
+        <div className="panel__tags">
           {tags.map((t) => (
             <span key={t} className="tag">
               {t}

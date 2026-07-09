@@ -76,12 +76,15 @@ function selectProjects(repos) {
     .sort((a, b) => new Date(b.pushedAt ?? 0) - new Date(a.pushedAt ?? 0));
 
   // Pinned repos float to the top in the order listed in config.
+  // Unpinned repos all rank equally, so the stable sort keeps their
+  // pushed-date order. (Never return NaN from a comparator — Infinity
+  // minus Infinity — or the sort order becomes unspecified.)
   const pinnedOrder = GH.pinned.map((n) => n.toLowerCase());
-  visible.sort((a, b) => {
-    const ai = pinnedOrder.indexOf(a.name.toLowerCase());
-    const bi = pinnedOrder.indexOf(b.name.toLowerCase());
-    return (ai === -1 ? Infinity : ai) - (bi === -1 ? Infinity : bi);
-  });
+  const rank = (name) => {
+    const i = pinnedOrder.indexOf(name.toLowerCase());
+    return i === -1 ? pinnedOrder.length : i;
+  };
+  visible.sort((a, b) => rank(a.name) - rank(b.name));
 
   return visible.slice(0, GH.maxProjects);
 }

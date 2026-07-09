@@ -75,7 +75,7 @@ export default function ExperienceTree() {
       <PromptLine command={CONFIG.experienceCommand} />
 
       <h2 className="section__heading">Experience</h2>
-      <p className="section__meta">work history + education, depth-first</p>
+      <p className="section__meta">work history + education</p>
 
       <pre className={`tree ${printed ? 'tree--printed' : ''} ${done ? 'tree--done' : ''}`}>
         <span className="tree__line" style={{ '--i': 0 }}>
@@ -91,7 +91,7 @@ export default function ExperienceTree() {
           </span>
         ))}
         <span className="tree__line tree__summary" style={{ '--i': lines.length + 1 }}>
-          {'\n'}{dirs + 1} directories, {files} files
+          {'\n'}{dirs} directories, {files} files
         </span>
       </pre>
     </section>
