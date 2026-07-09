@@ -53,7 +53,7 @@ export default function Hero() {
           github/RushadW
         </a>
         <a className="btn" href={CONFIG.links.linkedin} target="_blank" rel="noreferrer">
-          linkedin
+          linkedIn
         </a>
       </div>
     </section>
