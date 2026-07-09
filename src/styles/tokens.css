@@ -9,7 +9,7 @@
 
 :root {
   /* ---- Palette (amber-phosphor on paper) ---- */
-  --c-bg: #f2efe6;        /* page background: warm paper, not white   */
+  --c-bg: #f5e9d0;        /* page background: warm paper, not white   */
   --c-surface: #ffffff;   /* card / block background                  */
   --c-ink: #111111;       /* text + all borders                       */
   --c-accent: #ffaa00;    /* CRT amber — highlights, prompt, buttons  */

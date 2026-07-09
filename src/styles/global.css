@@ -14,6 +14,8 @@ html {
 
 body {
   background: var(--c-bg);
+  background-image: radial-gradient(rgba(17, 17, 17, 0.2) 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
   color: var(--c-ink);
   font-family: var(--font-mono);
   font-size: var(--fs-body);

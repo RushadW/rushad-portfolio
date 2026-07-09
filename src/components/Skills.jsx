@@ -7,10 +7,9 @@ export default function Skills() {
     <section className="section" id="skills" aria-label="Skills">
       <PromptLine command={CONFIG.skillsCommand} />
 
+      {/* Edit src/data/skills.js to add or remove anything below. */}
       <h2 className="section__heading">Skills</h2>
-      <p className="section__meta">
-        edit src/data/skills.js to add or remove anything below
-      </p>
+      <p className="section__meta">tools I reach for, grouped by directory</p>
 
       <div className="skills-groups">
         {SKILLS.map(({ group, items }) => (
