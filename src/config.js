@@ -46,6 +46,18 @@ export const CONFIG = {
   github: {
     username: 'RushadW',
 
+    // Show the avatar next to the name in the whoami section.
+    showAvatar: true,
+
+    // Where the avatar image comes from:
+    //   'github' — pull the live avatar from github.com/<username>.png
+    //   'local'  — use a file you provide (see avatarPath below)
+    avatarSource: 'local',
+
+    // Used when avatarSource is 'local'. Drop the image into public/
+    // and point this at it (e.g. '/avatar.jpg').
+    avatarPath: '/avatar.png',
+
     // How often the site re-pulls from the GitHub API.
     // Between refreshes, results are served from localStorage.
     // Change this ONE value to change the frequency.
@@ -89,4 +101,11 @@ export function resumeHref() {
  */
 export function githubAvatarUrl(size = 240) {
   return `https://github.com/${CONFIG.github.username}.png?size=${size}`;
+}
+
+/** The resolved avatar image every consumer should use. */
+export function avatarUrl(size = 240) {
+  return CONFIG.github.avatarSource === 'local'
+    ? CONFIG.github.avatarPath
+    : githubAvatarUrl(size);
 }

@@ -1,4 +1,4 @@
-import { CONFIG, resumeHref, githubAvatarUrl } from '../config.js';
+import { CONFIG, resumeHref, avatarUrl } from '../config.js';
 
 function PromptLine({ command }) {
   return (
@@ -28,36 +28,33 @@ export default function Hero() {
             <span className="hero__cursor" aria-hidden="true" />
           </p>
           <p className="hero__subline">{CONFIG.subline}</p>
-
-          <div className="hero__actions">
-            <a
-              className="btn btn--accent"
-              href={resumeHref()}
-              target="_blank"
-              rel="noreferrer"
-            >
-              cat resume.pdf
-            </a>
-            <a className="btn" href={CONFIG.links.github} target="_blank" rel="noreferrer">
-              github/RushadW
-            </a>
-            <a className="btn" href={CONFIG.links.linkedin} target="_blank" rel="noreferrer">
-              linkedin
-            </a>
-          </div>
         </div>
 
-        <img
-          className="hero__avatar"
-          src={githubAvatarUrl(400)}
-          alt={`${CONFIG.name} — GitHub avatar`}
-          width={200}
-          height={200}
-          loading="lazy"
-          onError={(e) => {
-            e.currentTarget.style.display = 'none';
-          }}
-        />
+        {CONFIG.github.showAvatar && (
+          <img
+            className="hero__avatar"
+            src={avatarUrl(200)}
+            alt={`${CONFIG.name} — GitHub avatar`}
+            width={200}
+            height={200}
+            loading="lazy"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+            }}
+          />
+        )}
+      </div>
+
+      <div className="hero__actions">
+        <a className="btn btn--accent" href={resumeHref()} target="_blank" rel="noreferrer">
+          cat resume.pdf
+        </a>
+        <a className="btn" href={CONFIG.links.github} target="_blank" rel="noreferrer">
+          github/RushadW
+        </a>
+        <a className="btn" href={CONFIG.links.linkedin} target="_blank" rel="noreferrer">
+          linkedin
+        </a>
       </div>
     </section>
   );
