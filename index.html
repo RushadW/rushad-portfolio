@@ -17,7 +17,50 @@
     />
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Boot spinner: mirrors src/components/AsciiSpinner.jsx, shown
+           until React mounts and replaces this markup. Styles are inline
+           because the app CSS hasn't loaded yet at this point. -->
+      <div
+        id="boot-loader"
+        role="status"
+        aria-live="polite"
+        style="
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #f2efe6;
+          color: #111;
+          font-family: 'Fira Code', ui-monospace, Menlo, Consolas, monospace;
+          font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+        "
+      >
+        <span
+          style="
+            border: 3px solid #111;
+            background: #111;
+            color: #ffaa00;
+            padding: 1.5rem 2.25rem;
+            box-shadow: 6px 6px 0 #111;
+          "
+        >
+          <span id="boot-spinner" aria-hidden="true" style="color: #f2efe6">⠋</span>
+          booting rushad@portfolio ...
+        </span>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var frames = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'];
+        var i = 0;
+        var id = setInterval(function () {
+          var el = document.getElementById('boot-spinner');
+          if (!el) return clearInterval(id); // React took over
+          el.textContent = frames[(i = (i + 1) % frames.length)];
+        }, 90);
+      })();
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
