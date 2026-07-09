@@ -61,7 +61,7 @@ export const CONFIG = {
     // How often the site re-pulls from the GitHub API.
     // Between refreshes, results are served from localStorage.
     // Change this ONE value to change the frequency.
-    refreshIntervalMs: 6 * 60 * 60 * 1000, // 6 hours
+    refreshIntervalMs: 7 * 24 * 60 * 60 * 1000, // 7 days
 
     // Max projects rendered as tabs.
     maxProjects: 8,
