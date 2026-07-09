@@ -66,7 +66,10 @@ export const CONFIG = {
     // Max projects rendered as tabs.
     maxProjects: 8,
 
-    // Repos to always hide (forks are excluded automatically).
+    // OMIT LIST — repos to always hide from the feed, by name
+    // (case-insensitive). Takes effect immediately, even for repos
+    // already in the cache. Forks and archived repos are excluded
+    // automatically.
     exclude: ['RushadW'],
 
     // Repos to pin to the front tabs regardless of recency.

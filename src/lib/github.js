@@ -64,14 +64,22 @@ function normalizeRepo(repo) {
   };
 }
 
+/**
+ * Drop repos listed in CONFIG.github.exclude. Applied to cached and
+ * fallback data too — not just fresh API pulls — so editing the omit
+ * list in config.js takes effect immediately instead of whenever the
+ * cache next expires.
+ */
+function omitExcluded(projects) {
+  const excluded = new Set(GH.exclude.map((n) => n.toLowerCase()));
+  return projects.filter((p) => !excluded.has(p.name.toLowerCase()));
+}
+
 /** Filter, pin, sort (latest first), and cap the list. */
 function selectProjects(repos) {
-  const excluded = new Set(GH.exclude.map((n) => n.toLowerCase()));
-
-  const visible = repos
-    .filter((r) => !r.fork)
-    .filter((r) => !r.archived)
-    .filter((r) => !excluded.has(r.name.toLowerCase()))
+  const visible = omitExcluded(
+    repos.filter((r) => !r.fork).filter((r) => !r.archived)
+  )
     .map(normalizeRepo)
     .sort((a, b) => new Date(b.pushedAt ?? 0) - new Date(a.pushedAt ?? 0));
 
@@ -99,7 +107,11 @@ export async function getProjects() {
   const cache = readCache();
 
   if (isFresh(cache)) {
-    return { projects: cache.projects, source: 'cache', fetchedAt: cache.fetchedAt };
+    return {
+      projects: omitExcluded(cache.projects),
+      source: 'cache',
+      fetchedAt: cache.fetchedAt,
+    };
   }
 
   try {
@@ -114,7 +126,11 @@ export async function getProjects() {
   } catch (err) {
     if (cache) {
       // Stale beats broken.
-      return { projects: cache.projects, source: 'stale-cache', fetchedAt: cache.fetchedAt };
+      return {
+        projects: omitExcluded(cache.projects),
+        source: 'stale-cache',
+        fetchedAt: cache.fetchedAt,
+      };
     }
     // Last resort: the static snapshot shipped with the site.
     const res = await fetch(GH.fallbackPath);
