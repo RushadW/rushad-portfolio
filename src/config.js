@@ -70,7 +70,7 @@ export const CONFIG = {
     // (case-insensitive). Takes effect immediately, even for repos
     // already in the cache. Forks and archived repos are excluded
     // automatically.
-    exclude: ['RushadW'],
+    exclude: ['asuteam13-healthcare-revamp'],
 
     // Repos to pin to the front tabs regardless of recency.
     pinned: [],
