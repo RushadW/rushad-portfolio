@@ -286,6 +286,13 @@ a:hover {
   margin-bottom: 1.5rem;
 }
 
+/* Arrow-key hint is meaningless without a keyboard — hide on touch. */
+@media (hover: none) {
+  .section__meta-keys {
+    display: none;
+  }
+}
+
 .panel__tags {
   display: flex;
   flex-wrap: wrap;

@@ -77,11 +77,15 @@ export default function Projects() {
 
       <h2 className="section__heading">Latest Builds</h2>
       <p className="section__meta">
-        {status === 'ready'
-          ? `${count} repos · ${SOURCE_LABEL[source]}${
-              fetchedAt ? ` · synced ${timeAgo(new Date(fetchedAt).toISOString())}` : ''
-            } · use ← → to switch tabs`
-          : 'pulling repositories, newest push first'}
+        {status === 'ready' ? (
+          <>
+            {count} repos · {SOURCE_LABEL[source]}
+            {fetchedAt && ` · synced ${timeAgo(new Date(fetchedAt).toISOString())}`}
+            <span className="section__meta-keys"> · use ← → to switch tabs</span>
+          </>
+        ) : (
+          'pulling repositories, newest push first'
+        )}
       </p>
 
       {status === 'loading' && <AsciiSpinner />}
