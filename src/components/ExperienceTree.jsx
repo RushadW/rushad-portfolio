@@ -45,6 +45,7 @@ export default function ExperienceTree() {
   // into view, so visitors actually see it happen.
   const ref = useRef(null);
   const [printed, setPrinted] = useState(false);
+  const [done, setDone] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
@@ -57,6 +58,18 @@ export default function ExperienceTree() {
     return () => io.disconnect();
   }, [printed]);
 
+  // Per-line CSS animations can occasionally get dropped by the browser
+  // (e.g. if a scroll/compositing pass lands mid-delay), leaving a line
+  // stuck at opacity 0 — a "gap" in the middle of the tree. Once the
+  // whole staggered sequence should be finished, force every line
+  // visible so a missed animation can never leave a hole.
+  useEffect(() => {
+    if (!printed) return;
+    const totalMs = (lines.length + 2) * 70 + 200;
+    const t = setTimeout(() => setDone(true), totalMs);
+    return () => clearTimeout(t);
+  }, [printed, lines.length]);
+
   return (
     <section className="section" id="experience" aria-label="Experience" ref={ref}>
       <PromptLine command={CONFIG.experienceCommand} />
@@ -64,7 +77,7 @@ export default function ExperienceTree() {
       <h2 className="section__heading">Experience</h2>
       <p className="section__meta">work history + education, depth-first</p>
 
-      <pre className={`tree ${printed ? 'tree--printed' : ''}`}>
+      <pre className={`tree ${printed ? 'tree--printed' : ''} ${done ? 'tree--done' : ''}`}>
         <span className="tree__line" style={{ '--i': 0 }}>
           <span className="tree__dir">experience/</span>
         </span>

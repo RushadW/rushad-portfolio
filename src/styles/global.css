@@ -592,6 +592,13 @@ a:hover {
   animation-delay: calc(var(--i) * 70ms);
 }
 
+/* Safety net: guarantee every line ends up visible even if a browser
+   drops an individual line's animation frame (see ExperienceTree.jsx). */
+.tree--done .tree__line {
+  opacity: 1;
+  animation: none;
+}
+
 @keyframes tree-print {
   to {
     opacity: 1;

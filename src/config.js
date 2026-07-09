@@ -47,12 +47,12 @@ export const CONFIG = {
     username: 'RushadW',
 
     // Show the avatar next to the name in the whoami section.
-    showAvatar: true,
+    showAvatar: false,
 
     // Where the avatar image comes from:
     //   'github' — pull the live avatar from github.com/<username>.png
     //   'local'  — use a file you provide (see avatarPath below)
-    avatarSource: 'local',
+    avatarSource: 'github',
 
     // Used when avatarSource is 'local'. Drop the image into public/
     // and point this at it (e.g. '/avatar.jpg').
