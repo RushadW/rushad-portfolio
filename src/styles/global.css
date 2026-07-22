@@ -835,3 +835,16 @@ a:hover {
   text-align: center;
 }
 
+@media (max-width: 640px) {
+  .tree {
+    font-size: 0.72rem;
+    padding: 1rem 0.85rem;
+    overflow-x: hidden;
+  }
+  .tree__line {
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+}
+
+
