@@ -8,6 +8,7 @@
 import { CONFIG } from '../../config.js';
 import { GeminiAdapter } from './adapters/geminiAdapter.js';
 import { OpenAIAdapter } from './adapters/openAIAdapter.js';
+import { AnthropicAdapter } from './adapters/anthropicAdapter.js';
 import { MockAdapter } from './adapters/mockAdapter.js';
 
 class AIService {
@@ -28,6 +29,9 @@ class AIService {
         break;
       case 'openai':
         adapter = new OpenAIAdapter(CONFIG.ai);
+        break;
+      case 'anthropic':
+        adapter = new AnthropicAdapter(CONFIG.ai);
         break;
       case 'mock':
       default:
