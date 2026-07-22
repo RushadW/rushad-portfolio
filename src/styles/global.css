@@ -373,6 +373,7 @@ a:hover {
 
 /* ============ Accessibility & responsiveness ============ */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -380,6 +381,7 @@ a:hover {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+
   html {
     scroll-behavior: auto;
   }
@@ -389,16 +391,19 @@ a:hover {
   :root {
     --shadow-offset: 4px;
   }
+
   .titlebar__nav {
     gap: 0.6rem;
     flex-basis: 100%;
     margin-left: 0;
     justify-content: space-between;
   }
+
   .hero__layout {
     flex-direction: column-reverse;
     align-items: flex-start;
   }
+
   .hero__avatar {
     width: 96px;
     height: 96px;
@@ -521,7 +526,8 @@ a:hover {
 .tree__line {
   display: block;
   white-space: pre;
-  opacity: 0; /* revealed line-by-line once in view */
+  opacity: 0;
+  /* revealed line-by-line once in view */
 }
 
 .tree--printed .tree__line {
@@ -841,10 +847,9 @@ a:hover {
     padding: 1rem 0.85rem;
     overflow-x: hidden;
   }
+
   .tree__line {
     white-space: pre-wrap;
     word-break: break-word;
   }
 }
-
-

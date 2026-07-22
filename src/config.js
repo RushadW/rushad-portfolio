@@ -89,8 +89,13 @@ export const CONFIG = {
   // ---- Modular AI Service Config ---------------------------
   ai: {
     // Provider choice: 'gemini' | 'openai' | 'anthropic' | 'mock'
+    // Default model options per provider:
+    //   'gemini'    -> 'gemini-2.5-flash-lite' (or 'gemini-1.5-flash')
+    //   'openai'    -> 'gpt-4o-mini'
+    //   'anthropic' -> 'claude-haiku-4-5-20251001'
+    //   'mock'      -> 'mock-local-v1' (Offline / zero-cost testing)
     provider: 'gemini',
-    // Model identifier (Gemini Flash Lite is low cost and fast)
+    // Model identifier (overrides provider default if specified)
     model: 'gemini-2.5-flash-lite',
     // Max tokens for summary response
     maxTokens: 500,
