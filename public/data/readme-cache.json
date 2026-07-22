@@ -1,0 +1,35 @@
+{
+  "rushad-portfolio": {
+    "sha": "5902888883dd75b74386b3e589e9d1d87510059f",
+    "summary": "A terminal-themed personal portfolio site. Every section is driven by a fake shell prompt — `whoami --verbose`, `ls -F ./skills/`, `tree ./experience`,\n\nKey Highlights:\n---\n- **Zero backend.** No server, no database, no API keys. Just static assets.\n- **Live GitHub project feed** with a resilient, self-caching fetch strategy",
+    "media": [],
+    "videoLinks": [],
+    "links": [],
+    "updatedAt": 1784693130690
+  },
+  "RSA-Breaker": {
+    "sha": "fc591dcf7907069b3aa245b7566cd12d33e24e02",
+    "summary": "A Python tool built for the CSE 548 (Advanced Computer Network Security) group assignment to crack RSA private keys and decrypt ciphertext for student pairs in the class. Given each student's public key `(e, n)` and their partner's ciphertext `c`, the script factors `n` into primes `p` and `q`, computes the private key `d` via the Extended Euclidean Algorithm, and decrypts the plaintext using modular exponentiation.\n\nKey Highlights:\n---\n---\n**Install dependencies:**",
+    "media": [],
+    "videoLinks": [],
+    "links": [],
+    "updatedAt": 1784693130912
+  },
+  "FourBytes-RxRefactor": {
+    "sha": "cd20cd93a2a2214b91a25d29b7db41bd3f0e6994",
+    "summary": "> **Innovation Hacks 2.0 · April 3–5, 2026** RxRefactor is a full-stack AI application that tracks, compares, and analyzes **medical benefit drug policies** across multiple payers. It combines a structured database of **55 policies** across **15 specialty drugs** and **5 payers** with a **RAG-powered Claude AI assistant**, letting healthcare analysts ask natural-language questions and instantly receive accurate, sourced answers — with voice input/output, autocomplete, and rich markdown rendering.\n\nKey Highlights:\n**Live Demo:** [https://anton-rx-frontend-770871054693.us-central1.run.app](https://anton-rx-frontend-770871054693.us-central1.run.app)\n---\n- [Key Features](#key-features)",
+    "media": [],
+    "videoLinks": [],
+    "links": [
+      {
+        "title": "https://anton-rx-frontend-770871054693.us-central1.run.app",
+        "url": "https://anton-rx-frontend-770871054693.us-central1.run.app"
+      },
+      {
+        "title": "http://localhost:3000",
+        "url": "http://localhost:3000"
+      }
+    ],
+    "updatedAt": 1784693131164
+  }
+}

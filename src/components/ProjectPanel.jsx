@@ -1,28 +1,49 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { CONFIG } from '../config.js';
 import { timeAgo } from '../lib/format.js';
+import MediaCarousel from './MediaCarousel.jsx';
 
-/**
- * Images shown for a repo:
- *   1. CONFIG.github.media['repo-name'] if you added screenshots
- *      (drop files into public/media/ and list their paths).
- *   2. Otherwise, the repo's auto-generated GitHub social-preview
- *      card — customizable per repo on GitHub under
- *      Settings → Social preview.
- */
-function mediaFor(project) {
+let cachePromise = null;
+
+function loadReadmeCache() {
+  if (!cachePromise) {
+    cachePromise = fetch(CONFIG.ai.cachePath)
+      .then((res) => (res.ok ? res.json() : {}))
+      .catch(() => ({}));
+  }
+  return cachePromise;
+}
+
+function getFallbackOgImage(project) {
   const custom = CONFIG.github.media[project.name];
-  if (custom?.length) return custom;
-  return [
-    `https://opengraph.githubassets.com/portfolio/${CONFIG.github.username}/${project.name}`,
-  ];
+  if (custom?.length) return custom[0];
+  return `https://opengraph.githubassets.com/portfolio/${CONFIG.github.username}/${project.name}`;
 }
 
 export default function ProjectPanel({ project }) {
-  const { name, description, url, homepage, language, tags, stars, pushedAt } =
-    project;
-  const images = mediaFor(project);
-  const [broken, setBroken] = useState({});
+  const { name, description, url, homepage, language, tags, stars, pushedAt } = project;
+  const [summaryData, setSummaryData] = useState(null);
+  const fallbackOgImage = getFallbackOgImage(project);
+
+  useEffect(() => {
+    let isMounted = true;
+    loadReadmeCache().then((cache) => {
+      if (isMounted && cache[name]) {
+        setSummaryData(cache[name]);
+      }
+    });
+    return () => {
+      isMounted = false;
+    };
+  }, [name]);
+
+  const activeDescription = summaryData?.summary || description;
+  const mediaList = summaryData?.media?.length > 0
+    ? summaryData.media
+    : [{ url: fallbackOgImage, alt: `${name} preview` }];
+
+  const videoLinks = summaryData?.videoLinks || [];
+  const linksList = summaryData?.links || [];
 
   return (
     <article className="panel">
@@ -43,7 +64,21 @@ export default function ProjectPanel({ project }) {
         </span>
       </div>
 
-      <p className="panel__desc">{description}</p>
+      {/* AI / Preserved README Summary */}
+      <div className="panel__desc-box">
+        {summaryData?.summary ? (
+          <div className="panel__ai-summary">
+            <span className="ai-badge">&gt; AI_SUMMARY (README.md)</span>
+            <div className="summary-text">
+              {activeDescription.split('\n\n').map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <p className="panel__desc">{description}</p>
+        )}
+      </div>
 
       {tags.length > 0 && (
         <div className="panel__tags">
@@ -55,20 +90,13 @@ export default function ProjectPanel({ project }) {
         </div>
       )}
 
-      <div className="panel__media">
-        {images.map(
-          (src) =>
-            !broken[src] && (
-              <img
-                key={src}
-                src={src}
-                alt={`${name} screenshot`}
-                loading="lazy"
-                onError={() => setBroken((b) => ({ ...b, [src]: true }))}
-              />
-            )
-        )}
-      </div>
+      {/* Interactive Neobrutalist Media Carousel */}
+      <MediaCarousel
+        media={mediaList}
+        videoLinks={videoLinks}
+        links={linksList}
+        fallbackImage={fallbackOgImage}
+      />
     </article>
   );
 }

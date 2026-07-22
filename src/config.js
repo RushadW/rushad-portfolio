@@ -86,6 +86,18 @@ export const CONFIG = {
     fallbackPath: '/data/profile.json',
   },
 
+  // ---- Modular AI Service Config ---------------------------
+  ai: {
+    // Provider choice: 'gemini' | 'openai' | 'anthropic' | 'mock'
+    provider: 'gemini',
+    // Model identifier (Gemini Flash Lite is low cost and fast)
+    model: 'gemini-2.5-flash-lite',
+    // Max tokens for summary response
+    maxTokens: 500,
+    // Shared README summary cache path
+    cachePath: '/data/readme-cache.json',
+  },
+
   // ---- Terminal flavor (the fake prompt commands) ----------
   heroCommand: 'whoami --verbose',
   skillsCommand: 'ls -F ./skills/',
