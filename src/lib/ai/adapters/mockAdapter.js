@@ -4,7 +4,7 @@
 
 export class MockAdapter {
   constructor(config = {}) {
-    this.model = 'mock-local-v1';
+    this.model = config.models?.mock || config.model || 'mock-local-v1';
   }
 
   async generateSummary(prompt, options = {}) {

@@ -5,7 +5,7 @@
 
 export class GeminiAdapter {
   constructor(config = {}) {
-    this.model = config.model || 'gemini-2.5-flash-lite';
+    this.model = config.models?.gemini || config.model || 'gemini-2.5-flash-lite';
     this.maxTokens = config.maxTokens || 500;
   }
 

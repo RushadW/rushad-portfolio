@@ -4,7 +4,7 @@
 
 export class AnthropicAdapter {
   constructor(config = {}) {
-    this.model = config.model || 'claude-haiku-4-5-20251001';
+    this.model = config.models?.anthropic || config.model || 'claude-haiku-4-5-20251001';
     this.maxTokens = config.maxTokens || 500;
   }
 

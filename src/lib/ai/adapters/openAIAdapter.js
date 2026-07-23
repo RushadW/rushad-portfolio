@@ -4,7 +4,7 @@
 
 export class OpenAIAdapter {
   constructor(config = {}) {
-    this.model = config.model || 'gpt-4o-mini';
+    this.model = config.models?.openai || config.model || 'gpt-4o-mini';
     this.maxTokens = config.maxTokens || 500;
   }
 
